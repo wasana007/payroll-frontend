@@ -125,7 +125,7 @@ function App() {
           <div className="logo-mark">L</div>
           <div>
             <h1 className="site-title">Lønnsrapportering</h1>
-            <p className="site-sub">JJava 21 · Spring Boot 3 · Kafka · React · MySQL</p>
+            <p className="site-sub">Java 21 · Spring Boot 3 · Kafka · React · MySQL</p>
           </div>
         </div>
         <div className="badge">
@@ -224,6 +224,10 @@ function App() {
                 <div className="result-row">
                   <span>Lønn</span>
                   <span>{Number(result.salary).toLocaleString()} kr</span>
+                </div>
+                  <div className="result-row">
+                  <span>Skatt</span>
+                  <span>{Number(result.tax).toLocaleString()} kr</span>
                 </div>
                 <div className="result-row">
                   <span>Måned</span>
