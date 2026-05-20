@@ -20,6 +20,18 @@ function App() {
 
   const stopPolling = () => clearInterval(pollRef.current);
 
+  const formatTid = () =>
+    new Date()
+      .toLocaleString("no-NO", {
+        day:    "numeric",
+        month:  "numeric",
+        year:   "2-digit",
+        hour:   "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      })
+      .replace(",", "");
+
   const startPolling = (corrId) => {
     let attempts = 0;
 
@@ -43,7 +55,7 @@ function App() {
             month:         data.month,
             status:        "COMPLETED",
             correlationId: corrId,
-            tid:           new Date().toLocaleTimeString(),
+            tid:           formatTid(),
           }, ...prev]);
         }
 
@@ -58,7 +70,7 @@ function App() {
             month:         data.month,
             status:        "FAILED",
             correlationId: corrId,
-            tid:           new Date().toLocaleTimeString(),
+            tid:           formatTid(),
           }, ...prev]);
         }
       } catch (e) {}
@@ -130,7 +142,6 @@ function App() {
         </div>
         <div className="badge">
           <span className="pulse-dot" />
-          Tilkoblet
         </div>
       </header>
 
