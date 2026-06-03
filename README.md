@@ -34,7 +34,7 @@ Ved feil sendes log events automatisk til LogSenseAI for AI-basert rotårsaksana
 | Teknologi | Versjon |
 |---|---|
 | React | 18+ |
-| Create React App | 5+ |
+| Vite | 5+ |
 
 ## Kom i gang
 
@@ -44,7 +44,7 @@ kjørende på `http://localhost:8282`
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
 Åpnes på `http://localhost:3001`
@@ -83,15 +83,34 @@ logsense-ai-frontend (port 3000)  ← "View analysis →"
 ## Statusflyt
 
 ```
-PENDING  → Behandles asynkront via Kafka
+PENDING   → Behandles asynkront via Kafka
 COMPLETED → Skatteberegning fullført, resultat vises
 FAILED    → Feil oppstod, LogSenseAI-knapp vises
+```
+
+## Prosjektstruktur
+
+```
+src/
+├── main.tsx                  # Inngangspunkt
+├── App.tsx                   # Hovedkomponent, global state, polling-logikk
+├── App.css                   # Styling
+├── config.ts                 # Alle konfigurasjonskonstanter
+├── vite-env.d.ts             # Vite type declarations
+├── types/
+│   └── payroll.ts            # Delte domenetyper (Status, PayrollResult, HistoryItem)
+├── utils/
+│   └── formatTid.ts          # Formaterer tidspunkt til norsk datostreng
+└── components/
+    ├── PayrollForm.tsx       # Skjema: Ansatt-ID, Lønn, Måned
+    ├── StatusCard.tsx        # PENDING / COMPLETED / FAILED + resultvisning
+    └── HistoryTable.tsx      # Historikktabell over innsendte rapporter
 ```
 
 ## Scripts
 
 ```bash
-npm start       # Start utviklingsserver på localhost:3001
-npm test        # Kjør tester
+npm run dev     # Start utviklingsserver på localhost:3001
 npm run build   # Bygg for produksjon
+npm run preview # Forhåndsvis produksjonsbygg
 ```
