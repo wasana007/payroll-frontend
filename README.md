@@ -8,7 +8,7 @@ Kommuniserer med en Java Spring Boot/Kafka-backend for å sende lønnsdata, spor
 ## 🎥 Demo
 
 ### 🎬 Payroll - Klikk på bildet nedenfor for å se hele demoen på YouTube ▶️
-[![Payroll Demo](https://img.youtube.com/vi/gF_LzKdxD3g/maxresdefault.jpg)](https://youtu.be/gF_LzKdxD3g)
+[![Payroll Demo](https://raw.githubusercontent.com/wasana007/payroll-backend/master/docs/images/payroll.jpg)](https://youtu.be/gF_LzKdxD3g)
 
 
 ## Oversikt
