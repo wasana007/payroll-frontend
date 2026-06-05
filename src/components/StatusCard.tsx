@@ -1,7 +1,7 @@
-import { LOGSENSE_URL } from "../config";
-import { formatTid } from "../utils/formatTid";
+import { LOGSENSE_URL } from '../config';
+import { formatTid } from '../utils/formatTid';
 
-type Status = "COMPLETED" | "PENDING" | "FAILED";
+type Status = 'COMPLETED' | 'PENDING' | 'FAILED';
 
 interface PayrollResult {
   employeeId: string;
@@ -18,32 +18,40 @@ interface StatusCardProps {
   result?: PayrollResult | null;
 }
 
-export default function StatusCard({ status, correlationId, result }: StatusCardProps) {
+export default function StatusCard({
+  status,
+  correlationId,
+  result,
+}: StatusCardProps) {
   if (!status) return null;
 
   return (
-    <section className={`card status-card ${
-      status === "COMPLETED" ? "ok"
-      : status === "PENDING"  ? "pending"
-      : "err"
-    }`}>
+    <section
+      className={`card status-card ${
+        status === 'COMPLETED' ? 'ok' : status === 'PENDING' ? 'pending' : 'err'
+      }`}
+    >
       <div className="status-header">
         <span className="status-icon">
-          {status === "COMPLETED" ? "✅" : status === "PENDING" ? "⏳" : "❌"}
+          {status === 'COMPLETED' ? '✅' : status === 'PENDING' ? '⏳' : '❌'}
         </span>
         <span className="status-title">
-          {status === "COMPLETED" ? "Lønn behandlet"
-            : status === "PENDING" ? "Behandler via Kafka..."
-            : "Lønnsbehandling feilet"}
+          {status === 'COMPLETED'
+            ? 'Lønn behandlet'
+            : status === 'PENDING'
+              ? 'Behandler via Kafka...'
+              : 'Lønnsbehandling feilet'}
         </span>
         <span className={`status-badge ${status}`}>
-          {status === "COMPLETED" ? "FULLFØRT"
-            : status === "PENDING" ? "BEHANDLER"
-            : "FEILET"}
+          {status === 'COMPLETED'
+            ? 'FULLFØRT'
+            : status === 'PENDING'
+              ? 'BEHANDLER'
+              : 'FEILET'}
         </span>
       </div>
 
-      {status === "PENDING" && (
+      {status === 'PENDING' && (
         <div className="progress-bar-wrap">
           <div className="progress-bar" />
         </div>
@@ -56,7 +64,7 @@ export default function StatusCard({ status, correlationId, result }: StatusCard
         </div>
       )}
 
-      {status === "COMPLETED" && result && (
+      {status === 'COMPLETED' && result && (
         <div className="result-box ok">
           <div className="result-row">
             <span>Ansatt-ID</span>
@@ -64,11 +72,11 @@ export default function StatusCard({ status, correlationId, result }: StatusCard
           </div>
           <div className="result-row">
             <span>Lønn</span>
-            <span>{Number(result.salary).toLocaleString("no-NO")} kr</span>
+            <span>{Number(result.salary).toLocaleString('no-NO')} kr</span>
           </div>
           <div className="result-row">
             <span>Skatt</span>
-            <span>{Number(result.tax).toLocaleString("no-NO")} kr</span>
+            <span>{Number(result.tax).toLocaleString('no-NO')} kr</span>
           </div>
           <div className="result-row">
             <span>Måned</span>
@@ -81,7 +89,7 @@ export default function StatusCard({ status, correlationId, result }: StatusCard
         </div>
       )}
 
-      {status === "FAILED" && (
+      {status === 'FAILED' && (
         <>
           {result?.error && <p className="error-msg">{result.error}</p>}
           <div className="logsense-box">
@@ -92,12 +100,13 @@ export default function StatusCard({ status, correlationId, result }: StatusCard
                 <p className="logsense-sub">Rotårsak analyseres automatisk</p>
               </div>
             </div>
-            <a href={LOGSENSE_URL}
+            <a
+              href={LOGSENSE_URL}
               target="_blank"
               rel="noreferrer"
               className="logsense-btn"
             >
-             Vis analyse {'>'}
+              Vis analyse {'>'}
             </a>
           </div>
         </>

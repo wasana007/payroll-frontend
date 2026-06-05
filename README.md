@@ -4,12 +4,11 @@ Payroll Reporting React-frontend for et hendelsesdrevet lønnsrapporteringssyste
 correlationId-sporing og automatisk feildiagnostikk via LogSenseAI.
 Kommuniserer med en Java Spring Boot/Kafka-backend for å sende lønnsdata, spore behandling og hente resultater asynkront.
 
- 
 ## 🎥 Demo
 
 ### 🎬 Payroll - Klikk på bildet nedenfor for å se hele demoen på YouTube ▶️
-[![Payroll Demo](https://raw.githubusercontent.com/wasana007/payroll-backend/master/docs/images/payroll.jpg)](https://youtu.be/gF_LzKdxD3g)
 
+[![Payroll Demo](https://raw.githubusercontent.com/wasana007/payroll-backend/master/docs/images/payroll.jpg)](https://youtu.be/gF_LzKdxD3g)
 
 ## Oversikt
 
@@ -32,9 +31,9 @@ Ved feil sendes log events automatisk til LogSenseAI for AI-basert rotårsaksana
 ## Teknologi
 
 | Teknologi | Versjon |
-|---|---|
-| React | 18+ |
-| Vite | 5+ |
+| --------- | ------- |
+| React     | 18+     |
+| Vite      | 5+      |
 
 ## Kom i gang
 
@@ -53,13 +52,13 @@ npm run dev
 
 Konfigureres i `src/config.ts`:
 
-| Variabel | Standard | Beskrivelse |
-|---|---|---|
-| `API_BASE_URL` | `http://localhost:8282` | Payroll backend |
-| `API_URL` | `http://localhost:8282/api/v1/payroll` | Payroll endpoint |
-| `LOGSENSE_URL` | `http://localhost:3000` | LogSenseAI dashboard |
-| `POLL_INTERVAL` | `1500` | Polling-intervall i ms |
-| `POLL_MAX` | `20` | Maks polling-forsøk (~30 sek) |
+| Variabel        | Standard                               | Beskrivelse                   |
+| --------------- | -------------------------------------- | ----------------------------- |
+| `API_BASE_URL`  | `http://localhost:8282`                | Payroll backend               |
+| `API_URL`       | `http://localhost:8282/api/v1/payroll` | Payroll endpoint              |
+| `LOGSENSE_URL`  | `http://localhost:3000`                | LogSenseAI dashboard          |
+| `POLL_INTERVAL` | `1500`                                 | Polling-intervall i ms        |
+| `POLL_MAX`      | `20`                                   | Maks polling-forsøk (~30 sek) |
 
 ## Relasjon til backend og LogSenseAI
 
@@ -110,7 +109,21 @@ src/
 ## Scripts
 
 ```bash
-npm run dev     # Start utviklingsserver på localhost:3001
-npm run build   # Bygg for produksjon
-npm run preview # Forhåndsvis produksjonsbygg
+npm run dev          # Start utviklingsserver
+npm run build        # Bygg for produksjon
+npm run preview      # Forhåndsvis produksjonsbygg
+npm run typecheck    # TypeScript typesjekk
+npm run lint         # ESLint kodesjekk
+npm run format       # Prettier kodeformatering
+```
+
+## Testing
+
+```bash
+npx vitest run                  # Kjør alle tester
+npx vitest run --coverage       # Kjør tester med coverage-rapport
+npx playwright test             # Kjør E2E-tester
+npx playwright test --ui        # Kjør E2E-tester med UI
+npx playwright test --debug     # Debug E2E-tester
+npx playwright show-report      # Vis testrapport
 ```

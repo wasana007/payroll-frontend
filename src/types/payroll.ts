@@ -1,5 +1,5 @@
 // src/types/payroll.ts
-export type Status = "COMPLETED" | "PENDING" | "FAILED";
+export type Status = 'COMPLETED' | 'PENDING' | 'FAILED';
 
 export interface PayrollResult {
   employeeId: string;

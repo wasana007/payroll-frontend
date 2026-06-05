@@ -9,8 +9,13 @@ interface PayrollFormProps {
   loading: boolean;
   isValid: boolean;
 }
-
-export default function PayrollForm({ form, onChange, onSubmit, loading, isValid }: PayrollFormProps) {
+export default function PayrollForm({
+  form,
+  onChange,
+  onSubmit,
+  loading,
+  isValid,
+}: PayrollFormProps) {
   return (
     <section className="card form-card">
       <div className="card-label">💰 Send lønnsdata</div>
@@ -49,9 +54,13 @@ export default function PayrollForm({ form, onChange, onSubmit, loading, isValid
         onClick={onSubmit}
         disabled={loading || !isValid}
       >
-        {loading
-          ? <><span className="spinner" /> Behandler...</>
-          : "Send lønnsdata"}
+        {loading ? (
+          <>
+            <span className="spinner" /> Behandler...
+          </>
+        ) : (
+          'Send lønnsdata'
+        )}
       </button>
     </section>
   );

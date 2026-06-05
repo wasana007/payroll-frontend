@@ -1,4 +1,4 @@
-import type { HistoryItem } from "../types/payroll";
+import type { HistoryItem } from '../types/payroll';
 
 type Props = {
   history: HistoryItem[];
@@ -30,23 +30,23 @@ export default function HistoryTable({ history }: Props) {
                 <td>{h.employeeId}</td>
 
                 <td>
-                  {typeof h.salary === "number"
-                    ? h.salary.toLocaleString() + " kr"
+                  {typeof h.salary === 'number'
+                    ? h.salary.toLocaleString() + ' kr'
                     : h.salary}
                 </td>
 
                 <td>
-                  {h.tax !== "-" && h.tax
-                    ? Number(h.tax).toLocaleString("no-NO") + " kr"
-                    : "—"}
+                  {h.tax !== '-' && h.tax
+                    ? Number(h.tax).toLocaleString('no-NO') + ' kr'
+                    : '—'}
                 </td>
 
                 <td>{h.month}</td>
 
                 <td>
                   <span className={`row-status ${h.status}`}>
-                    {h.status === "COMPLETED" ? "✓" : "✗"}{" "}
-                    {h.status === "COMPLETED" ? "Fullført" : "Feilet"}
+                    {h.status === 'COMPLETED' ? '✓' : '✗'}{' '}
+                    {h.status === 'COMPLETED' ? 'Fullført' : 'Feilet'}
                   </span>
                 </td>
 
